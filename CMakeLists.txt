@@ -10,6 +10,12 @@ add_library(${PROJECT_NAME} SHARED
     src/main.cpp
 )
 
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/mod
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/popups
+)
+
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
 else()
