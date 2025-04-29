@@ -5,7 +5,7 @@
 
 using namespace geode::prelude;
 
-class $modify(MyCommentCell, CommentCell) {
+class $modify(ADBCommentCell, CommentCell) {
     void loadFromComment(GJComment* comment) {
         CommentCell::loadFromComment(comment);
         if (comment->m_levelID <= 0) return;
@@ -17,7 +17,7 @@ class $modify(MyCommentCell, CommentCell) {
             auto sprite = CCSprite::create("admin.png"_spr);
             sprite->setScale(0.7f);
         
-            auto item = CCMenuItemSpriteExtra::create(sprite, this, menu_selector(MyCommentCell::onBadge));
+            auto item = CCMenuItemSpriteExtra::create(sprite, this, menu_selector(ADBCommentCell::onBadge));
             menu->addChild(item);
             menu->updateLayout();
         }
