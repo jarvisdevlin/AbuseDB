@@ -34,7 +34,7 @@ class $modify(ADBLevelInfoLayer, LevelInfoLayer) {
                         geode::queueInMainThread([body, levelID]() {
                             geode::createQuickPopup(
                                 "AbuseDB",
-                                gd::string("This level has been flagged by AbuseDB for inappropriate, misleading or harmful content.\n\nReason: ") + body,
+                                gd::string(std::string("This level has been flagged by AbuseDB for inappropriate, misleading or harmful content.\n\nReason: ") + body),
                                 "Hide", "OK",
                                 [levelID](auto, bool btn2) {
                                     if (!btn2) {
