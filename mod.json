@@ -1,5 +1,5 @@
 {
-    "geode": "4.3.1",
+    "geode": "4.4.0",
     "gd": {
         "win": "2.2074",
         "android": "2.2074",
@@ -8,11 +8,11 @@
     },
     "id": "jarvisdevil.abusedb",
     "name": "AbuseDB",
-    "version": "v1.0.0-beta.1",
+    "version": "v1.0.0-beta.2",
     "developer": "jarvisdevil",
-    "description": "Additional moderation? WOOOOOOO YEAH BABY!",
+    "description": "Additional moderation for GD",
     "links": {
-        "homepage": "https://abusedb.dpdns.org",
+        "homepage": "https://jarvisdevil.dpdns.org/abuse",
         "community": "https://discord.com/invite/EygBPh6JwW",
         "source": "https://github.com/jarvisdevlin/AbuseDB"
     },
