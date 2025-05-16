@@ -20,7 +20,10 @@ class $modify(ADBProfilePage, ProfilePage) {
 
         if (!hiddenAccs.count(accID)) {
             web::WebRequest req;
-            req.param("account", std::to_string(accID)).timeout(std::chrono::seconds(5));
+            req.param("api", "account")
+               .param("id", std::to_string(accID))
+               .timeout(std::chrono::seconds(5));
+
             m_fields->accListener.bind([accID](web::WebTask::Event* e) {
                 if (auto res = e->getValue(); res && res->code() >= 200 && res->code() < 300) {
                     auto body = res->string().unwrapOr("");
@@ -31,7 +34,7 @@ class $modify(ADBProfilePage, ProfilePage) {
                                 geode::createQuickPopup(
                                     "AbuseDB",
                                     fmt::format("This account has been flagged by AbuseDB.\n\nReason: {}", body),
-                                    "Hide", "OK",
+                                    "Always Hide", "OK",
                                     [accID](auto, bool btn2) {
                                         if (!btn2) {
                                             hiddenAccs.insert(accID);
@@ -44,7 +47,7 @@ class $modify(ADBProfilePage, ProfilePage) {
                     }
                 }
             });
-            m_fields->accListener.setFilter(req.get("https://abusedb.dpdns.org/api/geode"));
+            m_fields->accListener.setFilter(req.get("https://jarvisdevil.dpdns.org/abuse/api.php"));
         }
 
         if (!m_fields->addedReportBtn) {

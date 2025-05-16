@@ -41,22 +41,21 @@ class ReportLevel : public Popup<> {
 
         web::WebRequest req;
         req.header("Content-Type", "application/x-www-form-urlencoded")
-           .bodyString(fmt::format("level={}&creator={}&author={}&reason={}",
+           .bodyString(fmt::format("level_id={}&level_reason={}",
                                    m_level->m_levelID.value(),
-                                   m_level->m_accountID.value(),
-                                   GJAccountManager::get()->m_accountID, reason));
+                                   reason));
         m_reportListener.bind([](web::WebTask::Event* e) {
             if (e->getProgress())
                 return;
             if (e->isCancelled())
                 return;
             if (auto res = e->getValue(); res && res->code() >= 200 && res->code() < 300) {
-                FLAlertLayer::create("Success", "Report sent successfully.", "OK")->show();
+                FLAlertLayer::create("Success", "Report sent successfully, we are taking a look at it.", "OK")->show();
             } else {
                 FLAlertLayer::create("Error", "Failed to send report. Please try again.", "OK")->show();
             }
         });
-        m_reportListener.setFilter(req.post("https://abusedb.dpdns.org/api/report"));
+        m_reportListener.setFilter(req.post("https://jarvisdevil.dpdns.org/abuse/report.php"));
     }
 
 public:

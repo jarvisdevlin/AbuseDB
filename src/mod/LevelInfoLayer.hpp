@@ -21,7 +21,8 @@ class $modify(ADBLevelInfoLayer, LevelInfoLayer) {
         if (hiddenLvls.count(levelID)) return true;
 
         web::WebRequest req;
-        req.param("level", std::to_string(levelID))
+        req.param("api", "geode")
+           .param("level", std::to_string(levelID))
            .param("account", std::to_string(level->m_accountID.value()))
            .timeout(std::chrono::seconds(5));
 
@@ -34,8 +35,8 @@ class $modify(ADBLevelInfoLayer, LevelInfoLayer) {
                         geode::queueInMainThread([body, levelID]() {
                             geode::createQuickPopup(
                                 "AbuseDB",
-                                gd::string(std::string("This level has been flagged by AbuseDB for inappropriate, misleading or harmful content.\n\nReason: ") + body),
-                                "Hide", "OK",
+                                gd::string("This level has been flagged by AbuseDB for inappropriate, misleading or harmful content.\n\nReason: ") + body,
+                                "Always Hide", "OK",
                                 [levelID](auto, bool btn2) {
                                     if (!btn2) {
                                         hiddenLvls.insert(levelID);
@@ -48,7 +49,8 @@ class $modify(ADBLevelInfoLayer, LevelInfoLayer) {
                 }
             }
         });
-        m_fields->listener.setFilter(req.get("https://abusedb.dpdns.org/api/geode"));
+
+        m_fields->listener.setFilter(req.get("https://jarvisdevil.dpdns.org/abuse/api.php"));
 
         if (auto leftMenu = getChildByID("left-side-menu")) {
             auto btn = CCMenuItemSpriteExtra::create(

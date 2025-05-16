@@ -64,7 +64,7 @@ static void getMods() {
             geode::log::info("Successfully fetched AbuseDB moderators.");
         }
     });
-    m.setFilter(req.get("https://abusedb.dpdns.org/api/mods"));
+    m.setFilter(req.get("https://jarvisdevil.dpdns.org/abuse/api.php?api=mods"));
 }
 
 $execute {
