@@ -20,4 +20,4 @@ AbuseDB was made to save a few seconds of Elder Moderators time since they are a
 - **Bot or Not?**: If you recieve a strange message in Geometry Dash or theres someone that has highly suspicious behavior, you can check their profile. The moment you click on someones profile, an alert might pop up about the account if it's flagged. Since we also flag bot/spam accounts, you will know it might be a bot. If you did find a bot and it's not flagged, report it through the in-game account reporting system.
 - **Daily Chat**: omg just start reporting everyone there :sob:
 
-For more information, visit the [AbuseDB Website](https://abusedb.dpdns.org/api).
+For more information, visit the [AbuseDB Website](https://jarvisdevil.com/abuse).
