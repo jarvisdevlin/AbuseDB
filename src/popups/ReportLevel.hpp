@@ -14,23 +14,21 @@ class ReportLevel : public Popup<> {
     EventListener<web::WebTask> m_reportListener;
 
     bool setup() override {
-        setTitle("Report to AbuseDB");
-        scheduleOnce(schedule_selector(ReportLevel::addContent), 0.1f);
-        return true;
-    }
+        setTitle("Report Level to AbuseDB");
 
-    void addContent(float) {
-        auto size = getContentSize();
+        auto size = m_mainLayer->getContentSize();
         m_input = TextInput::create(260.f, "Enter reason for report", "chatFont.fnt");
         m_input->setPosition({ size.width / 2, size.height / 2 + 20.f });
-        addChild(m_input);
+        m_mainLayer->addChild(m_input);
 
         auto menu = CCMenu::createWithItem(CCMenuItemSpriteExtra::create(
             ButtonSprite::create("Send Report"),
             this, menu_selector(ReportLevel::onSend)
         ));
         menu->setPosition({ size.width / 2, size.height / 2 - 40.f });
-        addChild(menu);
+        m_mainLayer->addChild(menu);
+
+        return true;
     }
 
     void onSend(CCObject*) {
@@ -55,7 +53,7 @@ class ReportLevel : public Popup<> {
                 FLAlertLayer::create("Error", "Failed to send report. Please try again.", "OK")->show();
             }
         });
-        m_reportListener.setFilter(req.post("https://jarvisdevil.dpdns.org/abuse/report.php"));
+        m_reportListener.setFilter(req.post("https://jarvisdevil.com/abuse/report.php"));
     }
 
 public:

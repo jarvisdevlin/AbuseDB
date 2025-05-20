@@ -16,22 +16,20 @@ class ReportAccount : public Popup<> {
 
     bool setup() override {
         setTitle("Report Account to AbuseDB");
-        scheduleOnce(schedule_selector(ReportAccount::addContent), 0.1f);
-        return true;
-    }
 
-    void addContent(float) {
-        auto size = getContentSize();
+        auto size = m_mainLayer->getContentSize();
         input = TextInput::create(260.f, "Enter reason for report", "chatFont.fnt");
         input->setPosition({ size.width / 2, size.height / 2 + 20.f });
-        addChild(input);
+        m_mainLayer->addChild(input);
 
         auto menu = CCMenu::createWithItem(CCMenuItemSpriteExtra::create(
             ButtonSprite::create("Send Report"),
             this, menu_selector(ReportAccount::onSend)
         ));
         menu->setPosition({ size.width / 2, size.height / 2 - 40.f });
-        addChild(menu);
+        m_mainLayer->addChild(menu);
+
+        return true;
     }
 
     void onSend(CCObject*) {
@@ -56,7 +54,7 @@ class ReportAccount : public Popup<> {
                 FLAlertLayer::create("Error", "Failed to send report. Please try again.", "OK")->show();
             }
         });
-        reportListener.setFilter(req.post("https://jarvisdevil.dpdns.org/abuse/report.php"));
+        reportListener.setFilter(req.post("https://jarvisdevil.com/abuse/report.php"));
     }
 
 public:

@@ -36,9 +36,9 @@ class $modify(ADBLevelInfoLayer, LevelInfoLayer) {
                             geode::createQuickPopup(
                                 "AbuseDB",
                                 gd::string(std::string("This level has been flagged by AbuseDB for inappropriate, misleading or harmful content.\n\nReason: ") + body),
-                                "Always Hide", "OK",
+                                "I Understand", "Always Hide",
                                 [levelID](auto, bool btn2) {
-                                    if (!btn2) {
+                                    if (btn2) {
                                         hiddenLvls.insert(levelID);
                                         saveLvls();
                                     }
@@ -50,7 +50,7 @@ class $modify(ADBLevelInfoLayer, LevelInfoLayer) {
             }
         });
 
-        m_fields->listener.setFilter(req.get("https://jarvisdevil.dpdns.org/abuse/api.php"));
+        m_fields->listener.setFilter(req.get("https://jarvisdevil.com/abuse/api.php"));
 
         if (auto leftMenu = getChildByID("left-side-menu")) {
             auto btn = CCMenuItemSpriteExtra::create(

@@ -34,9 +34,9 @@ class $modify(ADBProfilePage, ProfilePage) {
                                 geode::createQuickPopup(
                                     "AbuseDB",
                                     fmt::format("This account has been flagged by AbuseDB.\n\nReason: {}", body),
-                                    "Always Hide", "OK",
+                                    "I Understand", "Always Hide",
                                     [accID](auto, bool btn2) {
-                                        if (!btn2) {
+                                        if (btn2) {
                                             hiddenAccs.insert(accID);
                                             saveAccs();
                                         }
@@ -47,7 +47,7 @@ class $modify(ADBProfilePage, ProfilePage) {
                     }
                 }
             });
-            m_fields->accListener.setFilter(req.get("https://jarvisdevil.dpdns.org/abuse/api.php"));
+            m_fields->accListener.setFilter(req.get("https://jarvisdevil.com/abuse/api.php"));
         }
 
         if (!m_fields->addedReportBtn) {

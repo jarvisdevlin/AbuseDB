@@ -5,6 +5,7 @@
 #include "mod/LevelInfoLayer.hpp"
 #include "mod/ProfilePage.hpp"
 #include "mod/CommentCell.hpp"
+#include "mod/MenuLayer.hpp"
 #include "popups/ReportLevel.hpp"
 #include "popups/ReportAccount.hpp"
 #include <thread>
@@ -64,7 +65,7 @@ static void getMods() {
             geode::log::info("Successfully fetched AbuseDB moderators.");
         }
     });
-    m.setFilter(req.get("https://jarvisdevil.dpdns.org/abuse/api.php?api=mods"));
+    m.setFilter(req.get("https://jarvisdevil.com/abuse/api.php?api=mods"));
 }
 
 $execute {

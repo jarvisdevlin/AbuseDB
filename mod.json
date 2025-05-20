@@ -8,11 +8,11 @@
     },
     "id": "jarvisdevil.abusedb",
     "name": "AbuseDB",
-    "version": "v1.0.0-beta.2",
+    "version": "v1.0.0",
     "developer": "jarvisdevil",
     "description": "Additional moderation for GD",
     "links": {
-        "homepage": "https://jarvisdevil.dpdns.org/abuse",
+        "homepage": "https://jarvisdevil.com/abuse",
         "community": "https://discord.com/invite/EygBPh6JwW",
         "source": "https://github.com/jarvisdevlin/AbuseDB"
     },
